@@ -12,4 +12,3 @@ const createUser = async () => {
     };
 };
 export default createUser;
-//# sourceMappingURL=createUser.js.map

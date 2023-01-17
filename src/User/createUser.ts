@@ -1,6 +1,6 @@
 import { faker, SexType } from "@faker-js/faker"
 
-type IUser = {
+export type IUser = {
   name: string
   gender: SexType
   _id: string
