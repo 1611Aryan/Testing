@@ -1,29 +1,19 @@
-import { faker, SexType } from "@faker-js/faker"
+import fetch from "node-fetch"
+const ENDPOINT = "https://api.randomuser.me/"
 
-export type IUser = {
-  name: string
-  gender: SexType
-  _id: string
-  phone: string
-  email: string
+export type User = {
+  results: any[]
 }
 
-const createUser = async (): Promise<IUser> => {
-  const name = faker.name.fullName(),
-    gender = faker.name.sexType(),
-    _id = faker.datatype.uuid(),
-    phone = faker.phone.number(),
-    email = faker.internet.email()
-  await new Promise(r => setTimeout(r, 2000))
-  console.log("Created")
+const getUser = async () => {
+  try {
+    const res = await fetch(ENDPOINT)
+    const data = (await res.json()) as User
 
-  return {
-    name,
-    gender,
-    _id,
-    phone,
-    email,
+    return data
+  } catch (err) {
+    throw err
   }
 }
 
-export default createUser
+export default getUser

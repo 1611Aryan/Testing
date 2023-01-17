@@ -1,14 +1,13 @@
-import { faker } from "@faker-js/faker";
-const createUser = async () => {
-    const name = faker.name.fullName(), gender = faker.name.sexType(), _id = faker.datatype.uuid(), phone = faker.phone.number(), email = faker.internet.email();
-    await new Promise(r => setTimeout(r, 2000));
-    console.log("Created");
-    return {
-        name,
-        gender,
-        _id,
-        phone,
-        email,
-    };
+import fetch from "node-fetch";
+const ENDPOINT = "https://api.randomuser.me/";
+const getUser = async () => {
+    try {
+        const res = await fetch(ENDPOINT);
+        const data = (await res.json());
+        return data;
+    }
+    catch (err) {
+        throw err;
+    }
 };
-export default createUser;
+export default getUser;

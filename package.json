@@ -10,7 +10,7 @@
     "start": "node dist/index.js",
     "lint": "eslint --ext .ts src",
     "lint:fix": "eslint --ext .ts src --fix",
-    "test": "pnpm build && cross-env DEBUG=testing_practice:* mocha build/test/unit"
+    "test": "pnpm build && mocha build/test/unit -- --recursive"
   },
   "keywords": [],
   "author": "",
@@ -34,5 +34,8 @@
     "sinon-chai": "^3.7.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.0"
   }
 }
